@@ -1,0 +1,20 @@
+
+<%-- Set "post_url_comments", "entityId" and "comments" variables --%>
+
+<%@page import="com.journeys.util.SessionUtil"%>
+<div id="search">
+
+	    <c:url var="post_url_search"  value="/app/search" />
+
+		<form method="GET" action="${post_url_search}">
+	    
+			<div class="field newline">
+	               <label for="searchTerms">Rechercher</label>
+	               <input type="text" name="searchTerms" value="${searchTerms}" />
+			</div>
+	        
+	        <input type="submit" name="valid" value="Rechercher" />
+
+	   </form>
+
+</div>

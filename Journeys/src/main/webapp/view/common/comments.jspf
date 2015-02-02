@@ -1,0 +1,51 @@
+
+<%-- Set "post_url_comments", "entityId" and "comments" variables --%>
+
+<%@page import="com.journeys.util.SessionUtil"%>
+<div id="comments">
+
+
+    
+    <c:if test="${!empty comments}">
+        <p class="intro">
+            Commentaires :
+        </p>
+         <c:forEach items="${comments}" var="comment">
+    
+             <div class="comment">
+             	<div class="username">${comment.user.firstName} ${comment.user.lastName} (<fmt:formatDate pattern="dd MMMM yy" value="${comment.date}" />)</div>
+               	<div class="content">${comment.content}</div>
+             </div>
+    
+         </c:forEach>
+    </c:if>
+    <c:if test="${empty comments}">
+        <p class="intro">
+            Soyez le premier à ajouter un commentaire !
+        </p>
+    </c:if>
+    
+    <c:if test="<%= SessionUtil.isAuthenticatedUser(request) %>">
+	    <form:form method="post" action="${post_url_comments}">
+	    
+	        <input type="hidden" name="entityId" value="${entityId}"/>
+
+			<div class="field newline">
+	               <label for="content">Ajouter un commentaire</label>
+	               <textarea id="content" name="content"></textarea>
+	                  <script type="text/javascript">
+		                  CKEDITOR.replace( 'content', {
+		                        toolbar:'JO',
+		                  		height: '300px'
+		                  });
+	                  </script>
+			</div>
+	        
+	        <input type="submit" name="valid" value="Ajouter" />
+
+	   </form:form>
+    </c:if>
+    <c:if test="<%= !SessionUtil.isAuthenticatedUser(request) %>">
+        <a class="link"target="_blank" href="<c:url value="/app/admin" />">Connectez-vous pour ajouter un commentaire</a>
+    </c:if>
+</div>

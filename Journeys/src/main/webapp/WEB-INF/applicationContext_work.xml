@@ -1,0 +1,132 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
+    xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:security="http://www.springframework.org/schema/security"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <context:annotation-config />
+
+    <!-- I18n -->
+    
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:messages" />
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+
+    <!-- Properties file -->
+    
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" p:location="/WEB-INF/application.properties" />
+    
+    <!-- Database and transaction -->
+    
+    <tx:annotation-driven />
+    
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <!-- Wor -->
+    <jdbc:embedded-database id="dataSource" type="HSQL" >
+        <jdbc:script location="classpath:data.sql"/>
+    </jdbc:embedded-database>
+
+    <!-- Hom -->
+	<!-- <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	    <property name="url" value="jdbc:mysql://localhost:3306/Journeys" />
+	    <property name="username" value="root" />
+	    <property name="password" value="root" />
+	</bean> -->
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation">
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+        <property name="configurationClass">
+            <value>org.hibernate.cfg.AnnotationConfiguration</value>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <!-- Wor -->
+                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+                <!-- Hom -->
+                <!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> -->
+                <prop key="hibernate.connection.characterEncoding">utf8</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <!-- Security -->
+    
+    <security:http auto-config="true">
+        <security:intercept-url pattern="/app/admin/user/**" access="ROLE_ADMIN" />
+        <security:intercept-url pattern="/app/admin/**" access="ROLE_ADMIN,ROLE_USER"/>
+        <security:form-login 
+		    login-page="/app/login" 
+		    default-target-url="/app/" 
+			authentication-failure-url="/app/login?error=true" 
+			username-parameter="username" 
+			password-parameter="password" />
+		<security:logout logout-success-url="/app/" />
+        <security:access-denied-handler error-page="/app/403" />
+    </security:http>
+    
+    <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder" />
+    
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:password-encoder ref="passwordEncoder" />
+            <security:jdbc-user-service data-source-ref="dataSource"
+                users-by-username-query="
+                    SELECT EMAIL as username, PASSWORD as password, ENABLED
+                    FROM USERS
+                    WHERE EMAIL=?;"
+                authorities-by-username-query="
+                    SELECT u.EMAIL as username, r.NAME as rolename
+                    FROM USERS u, USER_ROLE ur, ROLE r
+                    WHERE u.ID = ur.USER_ID
+                    AND ur.ROLE_ID = r.ID
+                    AND u.EMAIL=?;"
+                
+            />
+        </security:authentication-provider>
+    </security:authentication-manager>
+    
+    <!-- Application Beans -->
+    
+    <bean id="roleDAO" class="com.journeys.dao.RoleDaoImpl"></bean>
+    <bean id="roleManager" class="com.journeys.service.RoleManagerImpl"></bean>
+    
+    <bean id="userDAO" class="com.journeys.dao.UserDaoImpl"></bean>
+    <bean id="userManager" class="com.journeys.service.UserManagerImpl"></bean>
+
+    <bean id="journeyDAO" class="com.journeys.dao.JourneyDaoImpl"></bean>
+    <bean id="journeyManager" class="com.journeys.service.JourneyManagerImpl"></bean>
+
+    <bean id="dayDAO" class="com.journeys.dao.DayDaoImpl"></bean>
+    <bean id="dayManager" class="com.journeys.service.DayManagerImpl"></bean>
+    
+    <bean id="commentDAO" class="com.journeys.dao.CommentDaoImpl"></bean>
+    <bean id="commentManager" class="com.journeys.service.CommentManagerImpl"></bean>
+
+    <bean id="categoryGeoDAO" class="com.journeys.dao.CategoryGeoDaoImpl"></bean>
+    <bean id="categoryGeoManager" class="com.journeys.service.CategoryGeoManagerImpl"></bean>
+    
+    <bean id="categoryTripDAO" class="com.journeys.dao.CategoryTripDaoImpl"></bean>
+    <bean id="categoryTripManager" class="com.journeys.service.CategoryTripManagerImpl"></bean>
+    
+    <bean id="generatorManager" class="com.journeys.service.GeneratorManagerImpl"></bean>
+    
+</beans>

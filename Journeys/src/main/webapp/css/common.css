@@ -1,0 +1,250 @@
+html {
+    height: 100%
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0px;
+    padding:0px;
+}
+
+.clear {
+	clear: both;
+	height: 0px;
+}
+
+p {
+    margin: 0.1em 0px 0.5em 0px;
+}
+
+p.intro {
+    color: #555;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/***************** ADMIN ******************/
+
+.main_admin {
+	margin: 20px 20%;
+	width: 60%;	
+}
+
+/***************** FORM *******************/
+
+/* Label and fields */
+
+label, .field_label {
+    color: #555;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+div.field.float_left {
+    float: left;
+    margin-right: 20px;
+}
+
+div.field.cked input[type="text"],
+div.field.cked input[type="password"],
+div.field.cked select {
+	width: 800px;
+}
+
+div.field.short input[type="text"],
+div.field.short input[type="password"],
+div.field.short select {
+	width: 80px;
+}
+
+div.field.medium input[type="text"],
+div.field.medium input[type="password"],
+div.field.medium select,
+div.field input[type="text"],
+div.field input[type="password"],
+div.field select {
+	width: 200px;
+}
+
+div.field.long input[type="text"],
+div.field.long input[type="password"],
+div.field.long select {
+	width: 400px;
+}
+
+div.newline input, div.newline label,
+div.newline .field_value, div.newline .field_label {
+    display:block;
+}
+
+div.newline label, div.newline .field_label {
+    margin-right: 0px;
+}
+
+/* Buttons */
+
+input[type="button"], input[type="submit"] {
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  font-family: Arial;
+  color: #EEE;
+  font-size: 20px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  background: #AAA;
+  margin-top: 15px;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+  cursor: pointer;
+  background: #555;
+  background-image: -webkit-linear-gradient(top, #555, #3498db);
+  background-image: -moz-linear-gradient(top, #555, #AAA);
+  background-image: -ms-linear-gradient(top, #555, #AAA);
+  background-image: -o-linear-gradient(top, #555, #AAA);
+  background-image: linear-gradient(to bottom, #555, #AAA);
+  text-decoration: none;
+}
+
+input[type="button"].small_button, input[type="submit"].small_button {
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 2px 5px 2px 5px;
+  margin-top: 0px;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+}
+
+input[type="button"].small_button:hover, input[type="submit"].small_button:hover {
+  cursor: pointer;
+  background: #555;
+  background-image: -webkit-linear-gradient(top, #555, #3498db);
+  background-image: -moz-linear-gradient(top, #555, #AAA);
+  background-image: -ms-linear-gradient(top, #555, #AAA);
+  background-image: -o-linear-gradient(top, #555, #AAA);
+  background-image: linear-gradient(to bottom, #555, #AAA);
+  text-decoration: none;
+}
+
+/******************** MESSAGE **********************/
+
+.message {
+    padding: 10px 20px;
+    background-color: #EEE;
+    border: solid #555 2px;
+    margin: 20px 20% 20px 20%;
+    width: 60%;
+    color: #555;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.message.success_message {
+    background-color: #DDFFDD;
+    border: solid #00CC00 2px;
+}
+
+.message.error_message {
+    background-color: #FFEECC;
+    border: solid #FF0000 2px;
+}
+
+/************* ADMIN ************/
+
+a.link {
+	text-decoration: none;
+	color: #555;
+	padding: 10px 10px 10px 70px;
+	list-style-type: none;
+	background-size: 30px 30px;
+	background-repeat: no-repeat;
+	background-position: 25px 8px;
+	background-image : url('/Journeys/images/arrow-right.png');
+	display: block;
+}
+
+a.link.top {
+	background-image : url('/Journeys/images/arrow-top.png');
+}
+
+a.link.bottom {
+	background-image : url('/Journeys/images/arrow-bottom.png');
+}
+
+a.link.left {
+	background-image : url('/Journeys/images/arrow-left.png');
+}
+
+a.link:hover {
+	text-decoration: underline;
+}
+
+ul.admin_list {
+	margin-bottom: 20px;
+}
+
+ul.admin_list li {
+	list-style-type: none;
+}
+
+/*************** COMMENTS **************/
+
+#comments {
+    clear: both;
+	margin: 20px 25%;
+}
+
+#comments .comment .username {
+	color: #555;
+	margin-top: 20px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#comments .comment .content {
+	margin-top: 10px;
+	border: solid #DDD 1px;
+	padding: 15px;
+}
+
+/*********** SOCIAL NETWORKS ************/
+
+.facebook  {
+	float: left;
+	margin: 20px 20px 20px 20px;
+	height: 22px;
+	width: 50px;
+}
+
+.twitter  {
+	float: left;
+	margin: 20px 20px 20px 20px;
+	height: 22px;
+	width: 40px;
+}
+
+.pdf_link {
+	background-size: 30px 30px;
+	background-repeat: no-repeat;
+	background-image : url('/Journeys/images/pdf.png');
+	padding: 6px 0px 6px 45px;
+}

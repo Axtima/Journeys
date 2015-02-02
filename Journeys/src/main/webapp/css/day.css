@@ -1,0 +1,52 @@
+#main_day h1.day_title {
+    color: #555;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 40px;
+}
+
+#main_day #content_day {
+	margin: 0px 20px;
+	min-height: 300px;
+}
+
+#main_day #content_day h1 {
+	text-transform: uppercase;
+	color: #555:
+}
+
+#main_day #content_day h2 {
+	text-transform: uppercase;
+	color: #555;
+}
+
+#main_day #content_day h1 {
+	text-transform: uppercase;
+	color: #555;
+}
+
+#main_day #content_day h4 {
+	text-transform: uppercase;
+	color: #555;
+}
+
+#main_day #content_day img {
+	
+}
+
+/**************** EDIT *****************/
+
+#main_day_edit {
+    position: relative;
+}
+
+#main_day_edit #day_edit_picture {
+    position: absolute;
+    width: 250px;
+    right: 0px;
+}
+
+#main_day_edit .field_address .small_button,
+#main_day_edit .field_address #address {
+    display: inline-block;
+}

@@ -1,0 +1,82 @@
+h1.journey_title {
+    color: #555;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 40px;
+}
+
+.journey {
+    background-color: gray;
+    margin-left: 5px;
+}
+
+.journey .calendar_header {
+    width: 13.1%;
+    height: 20px;
+    float: left;
+    margin-right: 0.5%;
+    margin-bottom: 5px;
+    padding: 5px 0.3% 5px 0.3%;
+    color: #555;
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 20px;
+}
+
+.journey .calendar_day {
+	position: relative;
+    background-color: #F1F1F1;
+    background-size: cover;
+    width: 13.7%;
+    height: 130px;
+    float: left;
+    margin-right: 0.5%;
+    margin-bottom: 5px;
+}
+
+.journey .current_calendar_day {
+	border: solid #19A3D1 2px;
+}
+
+.journey a,
+.journey a:hover,
+.journey a:active {
+    text-decoration: none;
+}
+
+.journey .calendar_day .legend {
+	background-color: #000;
+	opacity:0.7;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	padding-bottom: 5px;
+}
+
+.journey .calendar_day .date {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+    padding: 0px 5px;
+}
+
+.journey .calendar_day .title {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    padding: 0px 5px;
+    text-transform: uppercase;
+}
+
+/**************** EDIT *****************/
+
+#main_journey_edit {
+    position: relative;
+}
+
+#main_journey_edit #journey_edit_picture {
+    position: absolute;
+    width: 250px;
+    right: 0px;
+}

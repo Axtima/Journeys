@@ -1,0 +1,17 @@
+.header {
+    width: 1000px;
+    height: 300px;
+    background-image: url('/Journeys/images/travel-banner.jpg');
+    background-repeat: no-repeat;
+    background-size: 1000px 300px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px auto;
+}
+
+.header p {
+    color: #555;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 30px;
+    text-align: center;
+}

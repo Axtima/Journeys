@@ -1,0 +1,11 @@
+<div class="header">
+    <p>&nbsp;</p>
+</div>
+
+<c:if test="${!empty errorMessage}">
+    <div class="message error_message">${errorMessage}</div>
+</c:if>
+
+<c:if test="${!empty successMessage}">
+    <div class="message success_message">${successMessage}</div>
+</c:if>

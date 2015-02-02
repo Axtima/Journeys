@@ -1,0 +1,82 @@
+
+
+/******** LINKER ********/
+
+
+.linker {
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.linker ul.linker_inside {
+	margin: 20px auto;
+	width: 1000px;
+	height: 45px;
+}
+
+.linker ul.linker_inside li.link {
+	padding: 10px 10px 10px 60px;
+	width: 250px;
+	float: left;
+	list-style-type: none;
+	border-left: solid #555 2px;
+	background-size: 30px 30px;
+	background-repeat: no-repeat;
+	background-position: 25px 8px;
+}
+
+.linker ul.linker_inside li.link.left {
+	background-image : url('/Journeys/images/arrow-left.png');
+}
+
+.linker ul.linker_inside li.link.right {
+	background-image : url('/Journeys/images/arrow-right.png');
+}
+
+.linker ul.linker_inside li.link.top {
+	background-image : url('/Journeys/images/arrow-top.png');
+}
+
+.linker ul.linker_inside li.link.bottom {
+	background-image : url('/Journeys/images/arrow-bottom.png');
+}
+
+
+.linker ul.linker_inside li.link.first {
+	border-left: none;
+}
+
+.linker ul.linker_inside li.link a {
+	color: #555;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+/******** FOOTER ********/
+
+.footer {
+	background-color: #FFF;
+	border-top : solid #555 2px;
+	color: #EEE;
+	width: 100%;
+	height: 200px;
+	margin-top: 30px;
+}
+
+.footer ul {
+	padding: 0px 20px 10px 20px;
+	float: left;
+}
+
+.footer ul li {
+	padding: 0px 0px 0px 0px;
+	margin: 0px 20px 0px 0px;
+	float: left;
+}
+
+.footer ul li a {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #555;
+}

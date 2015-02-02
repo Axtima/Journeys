@@ -1,0 +1,18 @@
+
+<%@page import="com.journeys.entity.User"%>
+<%@page import="com.journeys.util.SessionUtil"%>
+
+<div class="footer clear">
+   	<ul>
+   		<%
+   		User currentUser = SessionUtil.getAuthenticatedUser(request);
+   		%>
+   		<c:if test="<%= currentUser != null %>">
+   			<li><a href="<c:url value="/app/admin/" />"><%= currentUser.getFirstName() %> <%= currentUser.getLastName() %></a></li>
+   			<li><a href="<c:url value="/app/admin/" />">Accéder à mon compte</a></li>
+   			<li><a href="<c:url value="/j_spring_security_logout" />">Se déconnecter</a></li>
+   		</c:if>
+   		<c:if test="<%= SessionUtil.getAuthenticatedUser(request) == null %>">
+   			<li><a href="<c:url value="/app/admin/" />">Se connecter</a></li>
+   		</c:if>
+   	</ul>

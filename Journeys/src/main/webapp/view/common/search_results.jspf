@@ -1,0 +1,50 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@page import="com.journeys.util.SessionUtil"%>
+
+<div id="search">
+    
+    <!-- Journeys -->
+    
+     <p class="intro">
+         Voyages :
+     </p>
+        
+    <c:if test="${!empty searchJourneyResults}">
+
+         <c:forEach items="${searchJourneyResults}" var="journey">
+    
+             <div class="searchResultItem">
+             	<div class="title"><a href="<c:url value="/app/journey/${journey.id }" />">${journey.title} (<fmt:formatDate pattern="dd MMMM yy" value="${journey.startDate}" /> - <fmt:formatDate pattern="dd MMMM yy" value="${journey.endDate}" />)</a></div>
+             </div>
+    
+         </c:forEach>
+    </c:if>
+    <c:if test="${empty searchJourneyResults}">
+        <p class="intro">
+            Aucun voyage trouvé
+        </p>
+    </c:if>
+    
+    <!-- User -->
+    <p class="intro">
+        Utilisateurs :
+    </p>
+        
+    <c:if test="${!empty searchUserResults}">
+
+         <c:forEach items="${searchUserResults}" var="user">
+    
+             <div class="searchResultItem">
+             	<div class="title"><a href="<c:url value="/app/${user.id }" />">${user.fullName}</a></div>
+             </div>
+    
+         </c:forEach>
+    </c:if>
+    <c:if test="${empty searchUserResults}">
+        <p class="intro">
+            Aucun utilisateur trouvé
+        </p>
+    </c:if>
+    
+
+</div>

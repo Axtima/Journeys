@@ -1,0 +1,36 @@
+#main_home {
+
+}
+
+#main_home #search {
+	margin: 0px 20% 30px 20%;
+}
+
+#main_home p.intro {
+    margin: 0px 20% 20px 20%;
+}
+
+#main_home ul.user {
+    margin: 0px 20% 30px 20%;
+    padding:0px;
+}
+
+#main_home ul.user li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 4px 10px 4px 80px;
+    list-style-type: none;
+    text-align: left;
+    background-image : url('/Journeys/images/arrow-right.png');
+    background-repeat: no-repeat;
+    background-position: 25px 8px;
+    background-size: 30px 30px;
+}
+
+#main_home ul.user li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
